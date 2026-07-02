@@ -323,8 +323,8 @@ def get_country_id(country_code):
         for country in results:
 
             if (
-                country.get("code", "").upper()
-                == country_code.upper()
+                country.get("code", "")
+                == country_code
             ):
 
                 logging.info(
@@ -807,7 +807,7 @@ def main():
 
     parser.add_argument(
         "--country",
-        default=86,
+        default="MU",
         help="Country ID"
     )
 
@@ -819,13 +819,13 @@ def main():
 
     parser.add_argument(
         "--end-date",
-        default="2016-12-31",
+        default="2026-12-31",
         help="End date YYYY-MM-DD"
     )
 
     args = parser.parse_args()
 
-    country_code = args.country.upper()
+    country_code = args.country
 
     start_date = args.start_date
     end_date = args.end_date
