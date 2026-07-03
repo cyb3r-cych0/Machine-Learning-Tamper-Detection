@@ -23,6 +23,8 @@ OpenAQ API
     -> outputs/attacks/ground_truth.csv
     -> detection
     -> outputs/detection/
+    -> plots
+    -> plots/output/
 ```
 
 ## Repository Layout
@@ -33,10 +35,12 @@ OpenAQ API
 | `run_eda.py` | Entry point for exploratory data analysis. |
 | `run_attacks.py` | Entry point for attack simulation. |
 | `run_detection.py` | Entry point for anomaly detection and detector comparison. |
+| `run_plots.py` | Entry point for publication figure generation. |
 | `eda/` | Country-level and continental exploratory analysis package. |
 | `preprocessing/` | Dataset validation, cleaning, integrity checks, temporal features, quality scoring, and baseline export. |
 | `attacks/` | Attack campaign generation, attack injection, ground-truth labels, attack analytics, and manifests. |
 | `detection/` | Rolling z-score, Isolation Forest, and LSTM autoencoder anomaly detection with evaluation and comparison. |
+| `plots/` | Publication figure generation from attack and detection outputs. |
 | `tests/` | Root test package placeholder. Stage-specific tests live under each package. |
 | `requirements.txt` | Pinned environment used for the research pipeline. |
 | `pyproject.toml` | Package metadata and pytest configuration. |
@@ -47,6 +51,7 @@ Stage-level documentation:
 - `preprocessing/README.md`
 - `attacks/README.md`
 - `detection/README.md`
+- `plots/README.md`
 
 ## Requirements
 
@@ -187,11 +192,30 @@ Implemented detectors:
 - Isolation Forest
 - LSTM Autoencoder
 
+### 6. Generate Publication Figures
+
+```powershell
+python run_plots.py
+```
+
+Main outputs:
+
+```text
+plots/output/Figure_3_DetectorComparison.png
+plots/output/Figure_4_AttackRecall.png
+plots/output/Figure_5_CountryHeatmap.png
+plots/output/Figure_6_ConfidenceIntervals.png
+plots/output/Figure_7_ConfusionMatrices.png
+plots/output/Figure_8_Significance.png
+plots/output/Figure_9_CampaignSummary.png
+plots/output/Figure_10_Framework.png
+```
+
 ## Generated and Ignored Files
 
 The repository intentionally ignores local environments, private configuration,
-large/generated data, plots, logs, research drafts, reference papers, and legacy
-scripts. The ignored paths are configured in `.gitignore`.
+large/generated data, generated plot outputs, logs, research drafts, reference
+papers, and legacy scripts. The ignored paths are configured in `.gitignore`.
 
 Ignored project artifacts include:
 
@@ -202,7 +226,7 @@ Ignored project artifacts include:
 .idea/
 reference papers
 draft papers
-plots/
+plots/output/
 logs/
 data/
 data_results/
